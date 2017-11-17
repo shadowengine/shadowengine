@@ -30,8 +30,8 @@ export default class Canvas2D extends Renderer {
 
   resize() {
 		this._size = new Vector2($('body').width(), $('body').height());
-    this._$canvas.attr("width", this._size.getX());
-    this._$canvas.attr("height", this._size.getY());
+    this._$canvas.attr("width", this._size.X);
+    this._$canvas.attr("height", this._size.Y);
   }
 
   draw(scene, delta) {
