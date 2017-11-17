@@ -36,7 +36,7 @@ export default class Canvas2D extends Renderer {
 
   draw(scene, delta) {
     const ctx = this._context;
-    ctx.clearRect(0, 0, this._width, this._height);
+    ctx.clearRect(0, 0, this._size.X, this._size.Y);
 
     for(let i = 0; i < scene.entities.length; i++)
       scene.entities[i].draw(this._drawing, new Vector2(0, 0));

@@ -12295,7 +12295,7 @@ var Canvas2D = function (_Renderer) {
     key: "draw",
     value: function draw(scene, delta) {
       var ctx = this._context;
-      ctx.clearRect(0, 0, this._width, this._height);
+      ctx.clearRect(0, 0, this._size.X, this._size.Y);
 
       for (var i = 0; i < scene.entities.length; i++) {
         scene.entities[i].draw(this._drawing, new _Vector2.default(0, 0));
