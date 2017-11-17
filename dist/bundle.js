@@ -12288,8 +12288,8 @@ var Canvas2D = function (_Renderer) {
     key: "resize",
     value: function resize() {
       this._size = new _Vector2.default($('body').width(), $('body').height());
-      this._$canvas.attr("width", this._size.getX());
-      this._$canvas.attr("height", this._size.getY());
+      this._$canvas.attr("width", this._size.X);
+      this._$canvas.attr("height", this._size.Y);
     }
   }, {
     key: "draw",
