@@ -1,4 +1,6 @@
 import Renderer from "../Renderer";
+import Vector2 from "../Vector2";
+import Context2D from "../DrawingTools/Context2D";
 
 import "fpsmeter";
 
@@ -7,14 +9,14 @@ export default class Canvas2D extends Renderer {
   _$canvas = null;
   _context = null;
 
-  _width = 0;
-  _height = 0;
+	_size = Vector2.Invalid();
 
   constructor() {
     super();
 
     this._$canvas = $('<canvas></canvas>');
     this._context = this._$canvas.get(0).getContext('2d');
+		this._drawing = new Context2D(this._context);
 
     $('body').append(this._$canvas);
     $(window).resize(() => this.resize());
@@ -22,19 +24,14 @@ export default class Canvas2D extends Renderer {
     this.resize();
   }
 
-  getWidth() {
-    return this._width;
-  }
-
-  getHeight() {
-    return this._height;
+  getSize() {
+    return this._size;
   }
 
   resize() {
-    this._width  = $('body').width();
-    this._height = $('body').height();
-    this._$canvas.attr("width", this._width);
-    this._$canvas.attr("height", this._height);
+		this._size = new Vector2($('body').width(), $('body').height());
+    this._$canvas.attr("width", this._size.getX());
+    this._$canvas.attr("height", this._size.getY());
   }
 
   draw(scene, delta) {
@@ -42,7 +39,7 @@ export default class Canvas2D extends Renderer {
     ctx.clearRect(0, 0, this._width, this._height);
 
     for(let i = 0; i < scene.entities.length; i++)
-      scene.entities[i].draw(ctx, 0, 0);
+      scene.entities[i].draw(this._drawing, new Vector2(0, 0));
   }
 
 }

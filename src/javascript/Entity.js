@@ -1,9 +1,8 @@
+import Vector3 from "./Vector3";
+
 export default class Entity {
 
-  X = 0;
-  Y = 0;
-  Z = 0;
-
+  _position = Vector3.Invalid();
   _scene = null;
 
   constructor(scene) {
@@ -18,12 +17,20 @@ export default class Entity {
     return this._scene.getGame()
   }
 
-  draw(ctx, screenX, screenY) {
+	getPosition() {
+		return this._position;
+	}
+
+	setPosition(position) {
+		this._position = position;
+	}
+
+  draw(ctx, screenPosition) {
 
   }
 
   update(delta) {
-    
+
   }
 
 }
